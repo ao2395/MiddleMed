@@ -8,13 +8,11 @@ function SymptomAndDiagnosis() {
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [diagnosis, setDiagnosis] = useState([]);
-    const [useLiveAPI, setUseLiveAPI] = useState(false);  // State to toggle between live and sandbox
+    const [useLiveAPI, setUseLiveAPI] = useState(false);
 
-    const sandboxToken = process.env.REACT_APP_SANDBOX_TOKEN;
-    console.log(sandboxToken)
-    const liveToken = process.env.REACT_APP_LIVE_TOKEN;
+    const token = useLiveAPI ? process.env.REACT_APP_LIVE_TOKEN : process.env.REACT_APP_SANDBOX_TOKEN;
     const apiBaseURL = useLiveAPI ? "https://healthservice.priaid.ch" : "https://sandbox-healthservice.priaid.ch";
-    const token = useLiveAPI ? liveToken : sandboxToken;
+
     useEffect(() => {
         fetch(`${apiBaseURL}/symptoms?token=${token}&format=json&language=en-gb`)
             .then(response => response.json())
@@ -56,50 +54,34 @@ function SymptomAndDiagnosis() {
     return (
         <div className="container">
             <header className="header">
-                <div className="header-content">
-                    <h1>MiddleMed</h1>
+                <div className="toggle-container">
                     <label className="switch">
                         <input type="checkbox" checked={useLiveAPI} onChange={() => setUseLiveAPI(!useLiveAPI)} />
                         <span className="slider round"></span>
                     </label>
+                    <span className="status-label">{useLiveAPI ? 'Live' : 'Sandbox'}</span>
                 </div>
+                <h1 className="title">MiddleMed</h1>
             </header>
             <div className="body">
                 <div className="left-column">
-                    <input
-                        type="number"
-                        className="input-text"
-                        value={age}
-                        onChange={e => setAge(e.target.value)}
-                        placeholder="Enter your age"
-                    />
-                    <select
-                        className="input-select"
-                        value={gender}
-                        onChange={e => setGender(e.target.value)}
-                    >
+                    <input type="number" className="input-text" value={age} onChange={e => setAge(e.target.value)} placeholder="Enter your age" />
+                    <select className="input-select" value={gender} onChange={e => setGender(e.target.value)}>
                         <option value="">Select Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
                     <button className="submit-button" onClick={handleDiagnosis}>Diagnose</button>
-                    <input
-                        type="text"
-                        className="search-input"
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                        placeholder="Search symptoms"
-                    />
+                    <input type="text" className="search-input" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search symptoms" />
                     <div className="symptom-checkboxes">
                         {symptomsList.filter(symptom => symptom.Name.toLowerCase().includes(search.toLowerCase())).map(symptom => (
                             <label key={symptom.ID} className="checkbox-container">
-                                {symptom.Name}
                                 <input
                                     type="checkbox"
                                     checked={checkedState[symptom.ID]}
                                     onChange={() => handleCheckboxChange(symptom.ID)}
                                 />
-                                <span className="checkmark"></span>
+                                {symptom.Name}
                             </label>
                         ))}
                     </div>

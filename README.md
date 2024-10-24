@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# MiddleMed Diagnostic Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MiddleMed is an interactive diagnostic tool that leverages the Priaid Health API to provide users with potential medical diagnostics based on symptoms input. It offers an easy-to-use interface for entering symptoms and viewing diagnosis results, and it can switch between 'Live' and 'Sandbox' modes for development and production environments.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive UI**: Users can easily input their age, gender, and symptoms to receive medical diagnostics.
+- **Dual API Mode**: Toggle between Sandbox for testing and Live for production using a slider in the UI.
+- **Responsive Design**: Suitable for both desktop and mobile use.
+- **Real-time Search Filter**: Users can search through a list of symptoms to quickly find what they are looking for.
+- **Environmental Configuration**: API keys and endpoints are managed via environment variables for security and flexibility.
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/en/) (version 12.x or later)
+- [npm](https://www.npmjs.com/) (usually included with Node.js)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To set up MiddleMed locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/middlemed.git
+   cd middlemed
+   ```
 
-### `npm run build`
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Set up environment variables:**
+   Create a `.env.local` file in the root directory of the project and add the following variables:
+   ```plaintext
+   REACT_APP_SANDBOX_TOKEN=your_sandbox_token_here
+   REACT_APP_LIVE_TOKEN=your_live_token_here
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Start the application:**
+   ```bash
+   npm start
+   ```
+   This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+After launching the app, use the UI to enter the user's age and gender, select symptoms from the provided list, and click the "Diagnose" button to retrieve the diagnostics. Use the slider at the top left to switch between the Sandbox and Live environments.
+The Live version of the App has a much bigger dataset but limited calls.
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Acknowledgments
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Thanks to Priaid Health API for providing the medical data and diagnostic capabilities.
+- Thanks to all contributors who have helped to make this tool better.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## AI Assistance
+ - AI was used for CSS Styling
+ - It was also used to debug the main functionality of the program
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
